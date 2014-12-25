@@ -18,38 +18,21 @@ class ViewController: UIViewController {
     
     var speed : Float = 0.0
     var hight : Float = 0.0
-    
 
-
-    
-    /** SpeechSynthesizerクラス */
     var talker = AVSpeechSynthesizer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
-    }
-    
-    /** ボタンが押された時の処理 */
     @IBAction func didTapButton(sender: UIButton)
     {
         println("Voice!")
-        // 話す内容をセット
         let utterance = AVSpeechUtterance(string:self.speechText.text)
-        // 言語を日本に設定
         utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
-        // 話す速度を設定（0.0〜1.0）
         utterance.rate = speed
-        // 声の高さを設定（0.5〜2.0）
         utterance.pitchMultiplier = hight
         
-        // 実行
         self.talker.speakUtterance(utterance)
     }
     
@@ -62,6 +45,4 @@ class ViewController: UIViewController {
         hight = Float (sender.value)
         voice.text = "\(sender.value)"
     }
-
 }
-
